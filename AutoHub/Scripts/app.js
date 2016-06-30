@@ -11,6 +11,11 @@
         controller: "BrandsController"
     })
 
+     .when("/Leyland", {
+         templateUrl: "Templates/Home.html",
+         controller: "BrandsController"
+     })
+
       .otherwise({ redirectTo: "/Home" })
 });
 

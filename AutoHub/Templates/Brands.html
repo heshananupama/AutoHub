@@ -1,7 +1,72 @@
-﻿ <h1 align="center" style="margin:20px 0px;"> {{Heading}}</h1>
-<div class="row" style="margin-left:10%; margin-right:10%">
-    <div class="col-lg-3">
-        <a href="/Leyland" title="Leyland"> <img src="../Images/Logos/AshokLeyland.gif " alt="Alternate Text" />
-        </a>
+﻿<div>
+    <br /><h1 align="center"> Car Brands</h1>
+
+    <div align="center" class="row" style="margin:5% 10%;  ">
+        <div class="col-lg-3">
+            <a href="#/Leyland" title="Leyland">
+                <img class="img-zoom" style="border: 5px solid silver" height="150px" width="150px" src="Images/Logos/AshokLeyland.gif " alt="Alternate Text" />
+            </a>
+        </div>
+
+        <div class="col-lg-3">
+            <a href="/AstonMartin" title="Aston Martin">
+                <img class="img-zoom" style="border: 5px solid silver" height="150px" width="150px" src="Images/Logos/aston_martin.png " alt="Alternate Text" />
+            </a>
+        </div>
+
+        <div class="col-lg-3">
+            <a href="/Audi" title="Aston Martin">
+                <img class="img-zoom" style="border: 5px solid silver" height="150px" width="150px" src="Images/Logos/audi.jpg " alt="Alternate Text" />
+            </a>
+        </div>
+
+        <div class="col-lg-3">
+            <a href="/BMW" title="Aston Martin">
+                <img class="img-zoom" style="border: 5px solid silver" height="150px" width="150px" src="Images/Logos/bmw.gif " alt="Alternate Text" />
+            </a>
+        </div>
+
+
     </div>
+
+    <div align="center" class="row" style="margin:5% 10%;  ">
+        <div class="col-lg-3">
+            <a href="/Chevrolet" title="Chevrolet">
+                <img class="img-zoom" style="border: 5px solid silver" height="150px" width="150px" src="Images/Logos/Chevrolet.gif" alt="Alternate Text" />
+            </a>
+        </div>
+
+        <div class="col-lg-3">
+            <a href="/Ferrari" title="Ferrari">
+                <img class="img-zoom" style="border: 5px solid silver" height="150px" width="150px" src="Images/Logos/Ferrari.gif" alt="Alternate Text" />
+            </a>
+        </div>
+
+        <div class="col-lg-3">
+            <a href="/Fiat" title="Fiat">
+                <img class="img-zoom" style="border: 5px solid silver" height="150px" width="150px" src="Images/Logos/Fiat.gif " alt="Alternate Text" />
+            </a>
+        </div>
+
+        <div class="col-lg-3">
+            <a href="/Ford" title="Ford">
+                <img class="img-zoom" style="border: 5px solid silver" height="150px" width="150px" src="Images/Logos/Ford.gif" alt="Alternate Text" />
+            </a>
+        </div>
+
+
+    </div>
+
+
 </div>
+
+<script>
+    $(document).ready(function () {
+        $('.img-zoom').hover(function () {
+            $(this).addClass('transition');
+
+        }, function () {
+            $(this).removeClass('transition');
+        });
+    });
+</script>

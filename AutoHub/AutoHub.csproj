@@ -57,10 +57,25 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\img\backgrounds\1%402x.jpg" />
+    <Content Include="assets\img\backgrounds\1.jpg" />
+    <Content Include="assets\img\backgrounds\2%402x.jpg" />
+    <Content Include="assets\img\backgrounds\2.jpg" />
+    <Content Include="assets\img\backgrounds\3%402x.jpg" />
+    <Content Include="assets\img\backgrounds\3.jpg" />
+    <Content Include="bin\AutoHub.dll" />
+    <Content Include="bin\AutoHub.pdb" />
     <Content Include="Controllers\BrandsController.js" />
     <Content Include="Controllers\HomeController.js" />
+    <Content Include="CSS\bootstrap.min.css" />
+    <Content Include="CSS\font-awesome.min.css" />
+    <Content Include="CSS\form-elements.css" />
     <Content Include="Scripts\app.js" />
     <Content Include="packages.config" />
+    <Content Include="Scripts\jquery.backstretch.min.js" />
+    <Content Include="Scripts\scripts.js" />
+    <Content Include="Welcome.html" />
+    <Content Include="bin\AutoHub.dll.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
