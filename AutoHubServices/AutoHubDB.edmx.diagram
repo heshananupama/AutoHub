@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="39bc6686775e4af187884a8a88d4f0d4" Name="Diagram1" ZoomLevel="70">
+        <EntityTypeShape EntityType="AutohubModel.Admin" Width="1.5" PointX="3" PointY="14.625" />
+        <EntityTypeShape EntityType="AutohubModel.CartItem" Width="1.5" PointX="9.75" PointY="12.875" />
+        <EntityTypeShape EntityType="AutohubModel.Category" Width="1.5" PointX="5.25" PointY="15.875" />
+        <EntityTypeShape EntityType="AutohubModel.Customer" Width="1.5" PointX="3" PointY="7.375" />
+        <EntityTypeShape EntityType="AutohubModel.Enquiry" Width="1.5" PointX="5.25" PointY="4.375" />
+        <EntityTypeShape EntityType="AutohubModel.Feedback" Width="1.5" PointX="3" PointY="18.625" />
+        <EntityTypeShape EntityType="AutohubModel.Order" Width="1.5" PointX="5.25" PointY="10" />
+        <EntityTypeShape EntityType="AutohubModel.OrderItem" Width="1.5" PointX="7.5" PointY="10.25" />
+        <EntityTypeShape EntityType="AutohubModel.Retailer" Width="1.5" PointX="3" PointY="21.625" />
+        <EntityTypeShape EntityType="AutohubModel.ShoppingCart" Width="1.5" PointX="5.25" PointY="7.125" />
+        <EntityTypeShape EntityType="AutohubModel.Spare" Width="1.5" PointX="7.5" PointY="18" />
+        <EntityTypeShape EntityType="AutohubModel.User" Width="1.5" PointX="0.75" PointY="12.375" />
+        <EntityTypeShape EntityType="AutohubModel.VehicleBrand" Width="1.5" PointX="5.25" PointY="13.25" />
+        <EntityTypeShape EntityType="AutohubModel.VehicleModel" Width="1.5" PointX="9.75" PointY="16.625" />
+        <AssociationConnector Association="AutohubModel.FK_Admin_User" />
+        <AssociationConnector Association="AutohubModel.FK_Category_Admin" />
+        <AssociationConnector Association="AutohubModel.FK_VehicleBrand_Admin" />
+        <AssociationConnector Association="AutohubModel.FK_VehicleModel_Admin" />
+        <AssociationConnector Association="AutohubModel.FK_CartItem_ShoppingCart" />
+        <AssociationConnector Association="AutohubModel.FK_CartItem_Spare" />
+        <AssociationConnector Association="AutohubModel.FK_Customer_User" />
+        <AssociationConnector Association="AutohubModel.FK_Enquiry_Customer" />
+        <AssociationConnector Association="AutohubModel.FK_Order_Customer" />
+        <AssociationConnector Association="AutohubModel.FK_ShoppingCart_Customer" />
+        <AssociationConnector Association="AutohubModel.FK_Feedback_User" />
+        <AssociationConnector Association="AutohubModel.FK_OrderItem_Order" />
+        <AssociationConnector Association="AutohubModel.FK_Retailer_User" />
+        <AssociationConnector Association="AutohubModel.FK_Spare_Retailer" />
+        <AssociationConnector Association="AutohubModel.FK_VehicleModel_VehicleBrand" />
+        <AssociationConnector Association="AutohubModel.Category_Spare" />
+        <AssociationConnector Association="AutohubModel.Model_Spare" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

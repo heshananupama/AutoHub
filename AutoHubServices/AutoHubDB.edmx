@@ -1,0 +1,1114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="AutohubModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CartItem">
+          <Key>
+            <PropertyRef Name="CartItemId" />
+          </Key>
+          <Property Name="CartItemId" Type="int" Nullable="false" />
+          <Property Name="ItemUnitPrice" Type="money" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="SubTotal" Type="money" />
+          <Property Name="ShoppingCartID" Type="int" />
+          <Property Name="SpareId" Type="int" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="int" Nullable="false" />
+          <Property Name="CategoryName" Type="varchar" MaxLength="50" />
+          <Property Name="AdminUsername" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Category_Spare">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+            <PropertyRef Name="SpareId" />
+          </Key>
+          <Property Name="CategoryId" Type="int" Nullable="false" />
+          <Property Name="SpareId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Enquiry">
+          <Key>
+            <PropertyRef Name="EnquiryId" />
+          </Key>
+          <Property Name="EnquiryId" Type="int" Nullable="false" />
+          <Property Name="Date" Type="date" />
+          <Property Name="Description" Type="varchar" MaxLength="500" />
+          <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Feedback">
+          <Key>
+            <PropertyRef Name="FeedbackId" />
+          </Key>
+          <Property Name="FeedbackId" Type="int" Nullable="false" />
+          <Property Name="Type " Type="varchar" MaxLength="10" />
+          <Property Name="FeedbackDate" Type="date" />
+          <Property Name="Username" Type="varchar" MaxLength="50" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+          <Property Name="OrderID" Type="int" />
+        </EntityType>
+        <EntityType Name="Model_Spare">
+          <Key>
+            <PropertyRef Name="ModelId" />
+            <PropertyRef Name="SpareId" />
+          </Key>
+          <Property Name="ModelId" Type="int" Nullable="false" />
+          <Property Name="SpareId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="Date" Type="date" />
+          <Property Name="ShippingAddress" Type="varchar" MaxLength="200" />
+          <Property Name="OrderStatus" Type="varchar" MaxLength="50" />
+          <Property Name="OrderTotal" Type="money" />
+          <Property Name="Username" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="OrderItem">
+          <Key>
+            <PropertyRef Name="OrderItemId" />
+          </Key>
+          <Property Name="OrderItemId" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="SubTotal" Type="money" />
+          <Property Name="OrderId" Type="int" />
+        </EntityType>
+        <EntityType Name="Retailer">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="ShoppingCart">
+          <Key>
+            <PropertyRef Name="CartId" />
+          </Key>
+          <Property Name="CartId" Type="int" Nullable="false" />
+          <Property Name="CartTotal" Type="money" />
+          <Property Name="CartStatus" Type="char" MaxLength="1" />
+          <Property Name="Username" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Spare">
+          <Key>
+            <PropertyRef Name="SpareId" />
+          </Key>
+          <Property Name="SpareId" Type="int" Nullable="false" />
+          <Property Name="PartNumber" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="Price" Type="money" Nullable="false" />
+          <Property Name="Warranty" Type="datetime" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+          <Property Name="SpareImage" Type="varbinary(max)" />
+          <Property Name="RetailerUsername" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Type" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="ContactNumber" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="VehicleBrand">
+          <Key>
+            <PropertyRef Name="VehicleBrandId" />
+          </Key>
+          <Property Name="VehicleBrandId" Type="int" Nullable="false" />
+          <Property Name="AdminUsername" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="VehicleModel">
+          <Key>
+            <PropertyRef Name="ModelId" />
+          </Key>
+          <Property Name="ModelId" Type="int" Nullable="false" />
+          <Property Name="TransmissionType" Type="varchar" MaxLength="10" />
+          <Property Name="YearOfManufacture" Type="date" />
+          <Property Name="ModelName" Type="varchar" MaxLength="50" />
+          <Property Name="FuelType" Type="varchar" MaxLength="10" />
+          <Property Name="CountryMade" Type="varchar" MaxLength="20" />
+          <Property Name="AdminUsername" Type="varchar" MaxLength="50" />
+          <Property Name="VehicleBrand" Type="int" />
+          <Property Name="Username" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Admin_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Admin" Type="Self.Admin" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="Admin">
+              <PropertyRef Name="Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CartItem_ShoppingCart">
+          <End Role="ShoppingCart" Type="Self.ShoppingCart" Multiplicity="0..1" />
+          <End Role="CartItem" Type="Self.CartItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ShoppingCart">
+              <PropertyRef Name="CartId" />
+            </Principal>
+            <Dependent Role="CartItem">
+              <PropertyRef Name="ShoppingCartID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CartItem_Spare">
+          <End Role="Spare" Type="Self.Spare" Multiplicity="0..1" />
+          <End Role="CartItem" Type="Self.CartItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Spare">
+              <PropertyRef Name="SpareId" />
+            </Principal>
+            <Dependent Role="CartItem">
+              <PropertyRef Name="SpareId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Category_Admin">
+          <End Role="Admin" Type="Self.Admin" Multiplicity="1" />
+          <End Role="Category" Type="Self.Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Admin">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="Category">
+              <PropertyRef Name="AdminUsername" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Category_Spare_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="Category_Spare" Type="Self.Category_Spare" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Category_Spare">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Category_Spare_Spare">
+          <End Role="Spare" Type="Self.Spare" Multiplicity="1" />
+          <End Role="Category_Spare" Type="Self.Category_Spare" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Spare">
+              <PropertyRef Name="SpareId" />
+            </Principal>
+            <Dependent Role="Category_Spare">
+              <PropertyRef Name="SpareId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Enquiry_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="Enquiry" Type="Self.Enquiry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="Enquiry">
+              <PropertyRef Name="Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Feedback_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Feedback" Type="Self.Feedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="Feedback">
+              <PropertyRef Name="Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Model_Spare_Spare">
+          <End Role="Spare" Type="Self.Spare" Multiplicity="1" />
+          <End Role="Model_Spare" Type="Self.Model_Spare" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Spare">
+              <PropertyRef Name="SpareId" />
+            </Principal>
+            <Dependent Role="Model_Spare">
+              <PropertyRef Name="SpareId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Model_Spare_VehicleModel">
+          <End Role="VehicleModel" Type="Self.VehicleModel" Multiplicity="1" />
+          <End Role="Model_Spare" Type="Self.Model_Spare" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VehicleModel">
+              <PropertyRef Name="ModelId" />
+            </Principal>
+            <Dependent Role="Model_Spare">
+              <PropertyRef Name="ModelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderItem_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
+          <End Role="OrderItem" Type="Self.OrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="OrderItem">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Retailer_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Retailer" Type="Self.Retailer" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="Retailer">
+              <PropertyRef Name="Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShoppingCart_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="ShoppingCart" Type="Self.ShoppingCart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="ShoppingCart">
+              <PropertyRef Name="Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Spare_Retailer">
+          <End Role="Retailer" Type="Self.Retailer" Multiplicity="1" />
+          <End Role="Spare" Type="Self.Spare" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Retailer">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="Spare">
+              <PropertyRef Name="RetailerUsername" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VehicleBrand_Admin">
+          <End Role="Admin" Type="Self.Admin" Multiplicity="0..1" />
+          <End Role="VehicleBrand" Type="Self.VehicleBrand" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Admin">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="VehicleBrand">
+              <PropertyRef Name="AdminUsername" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VehicleModel_Admin">
+          <End Role="Admin" Type="Self.Admin" Multiplicity="0..1" />
+          <End Role="VehicleModel" Type="Self.VehicleModel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Admin">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="VehicleModel">
+              <PropertyRef Name="Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VehicleModel_VehicleBrand">
+          <End Role="VehicleBrand" Type="Self.VehicleBrand" Multiplicity="0..1" />
+          <End Role="VehicleModel" Type="Self.VehicleModel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VehicleBrand">
+              <PropertyRef Name="VehicleBrandId" />
+            </Principal>
+            <Dependent Role="VehicleModel">
+              <PropertyRef Name="VehicleBrand" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AutohubModelStoreContainer">
+          <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CartItem" EntityType="Self.CartItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category_Spare" EntityType="Self.Category_Spare" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Enquiry" EntityType="Self.Enquiry" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Feedback" EntityType="Self.Feedback" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Model_Spare" EntityType="Self.Model_Spare" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderItem" EntityType="Self.OrderItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Retailer" EntityType="Self.Retailer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ShoppingCart" EntityType="Self.ShoppingCart" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Spare" EntityType="Self.Spare" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VehicleBrand" EntityType="Self.VehicleBrand" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VehicleModel" EntityType="Self.VehicleModel" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Admin_User" Association="Self.FK_Admin_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Admin" EntitySet="Admin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CartItem_ShoppingCart" Association="Self.FK_CartItem_ShoppingCart">
+            <End Role="ShoppingCart" EntitySet="ShoppingCart" />
+            <End Role="CartItem" EntitySet="CartItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CartItem_Spare" Association="Self.FK_CartItem_Spare">
+            <End Role="Spare" EntitySet="Spare" />
+            <End Role="CartItem" EntitySet="CartItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Category_Admin" Association="Self.FK_Category_Admin">
+            <End Role="Admin" EntitySet="Admin" />
+            <End Role="Category" EntitySet="Category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Category_Spare_Category" Association="Self.FK_Category_Spare_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Category_Spare" EntitySet="Category_Spare" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Category_Spare_Spare" Association="Self.FK_Category_Spare_Spare">
+            <End Role="Spare" EntitySet="Spare" />
+            <End Role="Category_Spare" EntitySet="Category_Spare" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_User" Association="Self.FK_Customer_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Customer" EntitySet="Customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Enquiry_Customer" Association="Self.FK_Enquiry_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Enquiry" EntitySet="Enquiry" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Feedback_User" Association="Self.FK_Feedback_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Feedback" EntitySet="Feedback" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Model_Spare_Spare" Association="Self.FK_Model_Spare_Spare">
+            <End Role="Spare" EntitySet="Spare" />
+            <End Role="Model_Spare" EntitySet="Model_Spare" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Model_Spare_VehicleModel" Association="Self.FK_Model_Spare_VehicleModel">
+            <End Role="VehicleModel" EntitySet="VehicleModel" />
+            <End Role="Model_Spare" EntitySet="Model_Spare" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Customer" Association="Self.FK_Order_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderItem_Order" Association="Self.FK_OrderItem_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="OrderItem" EntitySet="OrderItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Retailer_User" Association="Self.FK_Retailer_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Retailer" EntitySet="Retailer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShoppingCart_Customer" Association="Self.FK_ShoppingCart_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="ShoppingCart" EntitySet="ShoppingCart" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Spare_Retailer" Association="Self.FK_Spare_Retailer">
+            <End Role="Retailer" EntitySet="Retailer" />
+            <End Role="Spare" EntitySet="Spare" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VehicleBrand_Admin" Association="Self.FK_VehicleBrand_Admin">
+            <End Role="Admin" EntitySet="Admin" />
+            <End Role="VehicleBrand" EntitySet="VehicleBrand" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VehicleModel_Admin" Association="Self.FK_VehicleModel_Admin">
+            <End Role="Admin" EntitySet="Admin" />
+            <End Role="VehicleModel" EntitySet="VehicleModel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VehicleModel_VehicleBrand" Association="Self.FK_VehicleModel_VehicleBrand">
+            <End Role="VehicleBrand" EntitySet="VehicleBrand" />
+            <End Role="VehicleModel" EntitySet="VehicleModel" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AutohubModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="AutohubEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Admins" EntityType="AutohubModel.Admin" />
+          <EntitySet Name="CartItems" EntityType="AutohubModel.CartItem" />
+          <EntitySet Name="Categories" EntityType="AutohubModel.Category" />
+          <EntitySet Name="Customers" EntityType="AutohubModel.Customer" />
+          <EntitySet Name="Enquiries" EntityType="AutohubModel.Enquiry" />
+          <EntitySet Name="Feedbacks" EntityType="AutohubModel.Feedback" />
+          <EntitySet Name="Orders" EntityType="AutohubModel.Order" />
+          <EntitySet Name="OrderItems" EntityType="AutohubModel.OrderItem" />
+          <EntitySet Name="Retailers" EntityType="AutohubModel.Retailer" />
+          <EntitySet Name="ShoppingCarts" EntityType="AutohubModel.ShoppingCart" />
+          <EntitySet Name="Spares" EntityType="AutohubModel.Spare" />
+          <EntitySet Name="Users" EntityType="AutohubModel.User" />
+          <EntitySet Name="VehicleBrands" EntityType="AutohubModel.VehicleBrand" />
+          <EntitySet Name="VehicleModels" EntityType="AutohubModel.VehicleModel" />
+          <AssociationSet Name="FK_Admin_User" Association="AutohubModel.FK_Admin_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Admin" EntitySet="Admins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Category_Admin" Association="AutohubModel.FK_Category_Admin">
+            <End Role="Admin" EntitySet="Admins" />
+            <End Role="Category" EntitySet="Categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VehicleBrand_Admin" Association="AutohubModel.FK_VehicleBrand_Admin">
+            <End Role="Admin" EntitySet="Admins" />
+            <End Role="VehicleBrand" EntitySet="VehicleBrands" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VehicleModel_Admin" Association="AutohubModel.FK_VehicleModel_Admin">
+            <End Role="Admin" EntitySet="Admins" />
+            <End Role="VehicleModel" EntitySet="VehicleModels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CartItem_ShoppingCart" Association="AutohubModel.FK_CartItem_ShoppingCart">
+            <End Role="ShoppingCart" EntitySet="ShoppingCarts" />
+            <End Role="CartItem" EntitySet="CartItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CartItem_Spare" Association="AutohubModel.FK_CartItem_Spare">
+            <End Role="Spare" EntitySet="Spares" />
+            <End Role="CartItem" EntitySet="CartItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_User" Association="AutohubModel.FK_Customer_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Enquiry_Customer" Association="AutohubModel.FK_Enquiry_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Enquiry" EntitySet="Enquiries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Customer" Association="AutohubModel.FK_Order_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShoppingCart_Customer" Association="AutohubModel.FK_ShoppingCart_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="ShoppingCart" EntitySet="ShoppingCarts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Feedback_User" Association="AutohubModel.FK_Feedback_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Feedback" EntitySet="Feedbacks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderItem_Order" Association="AutohubModel.FK_OrderItem_Order">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="OrderItem" EntitySet="OrderItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Retailer_User" Association="AutohubModel.FK_Retailer_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Retailer" EntitySet="Retailers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Spare_Retailer" Association="AutohubModel.FK_Spare_Retailer">
+            <End Role="Retailer" EntitySet="Retailers" />
+            <End Role="Spare" EntitySet="Spares" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VehicleModel_VehicleBrand" Association="AutohubModel.FK_VehicleModel_VehicleBrand">
+            <End Role="VehicleBrand" EntitySet="VehicleBrands" />
+            <End Role="VehicleModel" EntitySet="VehicleModels" />
+          </AssociationSet>
+          <AssociationSet Name="Category_Spare" Association="AutohubModel.Category_Spare">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Spare" EntitySet="Spares" />
+          </AssociationSet>
+          <AssociationSet Name="Model_Spare" Association="AutohubModel.Model_Spare">
+            <End Role="Spare" EntitySet="Spares" />
+            <End Role="VehicleModel" EntitySet="VehicleModels" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="User" Relationship="AutohubModel.FK_Admin_User" FromRole="Admin" ToRole="User" />
+          <NavigationProperty Name="Categories" Relationship="AutohubModel.FK_Category_Admin" FromRole="Admin" ToRole="Category" />
+          <NavigationProperty Name="VehicleBrands" Relationship="AutohubModel.FK_VehicleBrand_Admin" FromRole="Admin" ToRole="VehicleBrand" />
+          <NavigationProperty Name="VehicleModels" Relationship="AutohubModel.FK_VehicleModel_Admin" FromRole="Admin" ToRole="VehicleModel" />
+        </EntityType>
+        <EntityType Name="CartItem">
+          <Key>
+            <PropertyRef Name="CartItemId" />
+          </Key>
+          <Property Name="CartItemId" Type="Int32" Nullable="false" />
+          <Property Name="ItemUnitPrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="SubTotal" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ShoppingCartID" Type="Int32" />
+          <Property Name="SpareId" Type="Int32" />
+          <NavigationProperty Name="ShoppingCart" Relationship="AutohubModel.FK_CartItem_ShoppingCart" FromRole="CartItem" ToRole="ShoppingCart" />
+          <NavigationProperty Name="Spare" Relationship="AutohubModel.FK_CartItem_Spare" FromRole="CartItem" ToRole="Spare" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AdminUsername" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Admin" Relationship="AutohubModel.FK_Category_Admin" FromRole="Category" ToRole="Admin" />
+          <NavigationProperty Name="Spares" Relationship="AutohubModel.Category_Spare" FromRole="Category" ToRole="Spare" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="User" Relationship="AutohubModel.FK_Customer_User" FromRole="Customer" ToRole="User" />
+          <NavigationProperty Name="Enquiries" Relationship="AutohubModel.FK_Enquiry_Customer" FromRole="Customer" ToRole="Enquiry" />
+          <NavigationProperty Name="Orders" Relationship="AutohubModel.FK_Order_Customer" FromRole="Customer" ToRole="Order" />
+          <NavigationProperty Name="ShoppingCarts" Relationship="AutohubModel.FK_ShoppingCart_Customer" FromRole="Customer" ToRole="ShoppingCart" />
+        </EntityType>
+        <EntityType Name="Enquiry">
+          <Key>
+            <PropertyRef Name="EnquiryId" />
+          </Key>
+          <Property Name="EnquiryId" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Customer" Relationship="AutohubModel.FK_Enquiry_Customer" FromRole="Enquiry" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="Feedback">
+          <Key>
+            <PropertyRef Name="FeedbackId" />
+          </Key>
+          <Property Name="FeedbackId" Type="Int32" Nullable="false" />
+          <Property Name="Type_" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="FeedbackDate" Type="DateTime" Precision="0" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OrderID" Type="Int32" />
+          <NavigationProperty Name="User" Relationship="AutohubModel.FK_Feedback_User" FromRole="Feedback" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="ShippingAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="OrderStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OrderTotal" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Customer" Relationship="AutohubModel.FK_Order_Customer" FromRole="Order" ToRole="Customer" />
+          <NavigationProperty Name="OrderItems" Relationship="AutohubModel.FK_OrderItem_Order" FromRole="Order" ToRole="OrderItem" />
+        </EntityType>
+        <EntityType Name="OrderItem">
+          <Key>
+            <PropertyRef Name="OrderItemId" />
+          </Key>
+          <Property Name="OrderItemId" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="SubTotal" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="OrderId" Type="Int32" />
+          <NavigationProperty Name="Order" Relationship="AutohubModel.FK_OrderItem_Order" FromRole="OrderItem" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Retailer">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="User" Relationship="AutohubModel.FK_Retailer_User" FromRole="Retailer" ToRole="User" />
+          <NavigationProperty Name="Spares" Relationship="AutohubModel.FK_Spare_Retailer" FromRole="Retailer" ToRole="Spare" />
+        </EntityType>
+        <EntityType Name="ShoppingCart">
+          <Key>
+            <PropertyRef Name="CartId" />
+          </Key>
+          <Property Name="CartId" Type="Int32" Nullable="false" />
+          <Property Name="CartTotal" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="CartStatus" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CartItems" Relationship="AutohubModel.FK_CartItem_ShoppingCart" FromRole="ShoppingCart" ToRole="CartItem" />
+          <NavigationProperty Name="Customer" Relationship="AutohubModel.FK_ShoppingCart_Customer" FromRole="ShoppingCart" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="Spare">
+          <Key>
+            <PropertyRef Name="SpareId" />
+          </Key>
+          <Property Name="SpareId" Type="Int32" Nullable="false" />
+          <Property Name="PartNumber" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Warranty" Type="DateTime" Precision="3" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SpareImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="RetailerUsername" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CartItems" Relationship="AutohubModel.FK_CartItem_Spare" FromRole="Spare" ToRole="CartItem" />
+          <NavigationProperty Name="Retailer" Relationship="AutohubModel.FK_Spare_Retailer" FromRole="Spare" ToRole="Retailer" />
+          <NavigationProperty Name="Categories" Relationship="AutohubModel.Category_Spare" FromRole="Spare" ToRole="Category" />
+          <NavigationProperty Name="VehicleModels" Relationship="AutohubModel.Model_Spare" FromRole="Spare" ToRole="VehicleModel" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ContactNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Admin" Relationship="AutohubModel.FK_Admin_User" FromRole="User" ToRole="Admin" />
+          <NavigationProperty Name="Customer" Relationship="AutohubModel.FK_Customer_User" FromRole="User" ToRole="Customer" />
+          <NavigationProperty Name="Feedbacks" Relationship="AutohubModel.FK_Feedback_User" FromRole="User" ToRole="Feedback" />
+          <NavigationProperty Name="Retailer" Relationship="AutohubModel.FK_Retailer_User" FromRole="User" ToRole="Retailer" />
+        </EntityType>
+        <EntityType Name="VehicleBrand">
+          <Key>
+            <PropertyRef Name="VehicleBrandId" />
+          </Key>
+          <Property Name="VehicleBrandId" Type="Int32" Nullable="false" />
+          <Property Name="AdminUsername" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Admin" Relationship="AutohubModel.FK_VehicleBrand_Admin" FromRole="VehicleBrand" ToRole="Admin" />
+          <NavigationProperty Name="VehicleModels" Relationship="AutohubModel.FK_VehicleModel_VehicleBrand" FromRole="VehicleBrand" ToRole="VehicleModel" />
+        </EntityType>
+        <EntityType Name="VehicleModel">
+          <Key>
+            <PropertyRef Name="ModelId" />
+          </Key>
+          <Property Name="ModelId" Type="Int32" Nullable="false" />
+          <Property Name="TransmissionType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="YearOfManufacture" Type="DateTime" Precision="0" />
+          <Property Name="ModelName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FuelType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CountryMade" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AdminUsername" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VehicleBrand" Type="Int32" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Admin" Relationship="AutohubModel.FK_VehicleModel_Admin" FromRole="VehicleModel" ToRole="Admin" />
+          <NavigationProperty Name="VehicleBrand1" Relationship="AutohubModel.FK_VehicleModel_VehicleBrand" FromRole="VehicleModel" ToRole="VehicleBrand" />
+          <NavigationProperty Name="Spares" Relationship="AutohubModel.Model_Spare" FromRole="VehicleModel" ToRole="Spare" />
+        </EntityType>
+        <Association Name="FK_Admin_User">
+          <End Type="AutohubModel.User" Role="User" Multiplicity="1" />
+          <End Type="AutohubModel.Admin" Role="Admin" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="Admin">
+              <PropertyRef Name="Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Category_Admin">
+          <End Type="AutohubModel.Admin" Role="Admin" Multiplicity="1" />
+          <End Type="AutohubModel.Category" Role="Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Admin">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="Category">
+              <PropertyRef Name="AdminUsername" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VehicleBrand_Admin">
+          <End Type="AutohubModel.Admin" Role="Admin" Multiplicity="0..1" />
+          <End Type="AutohubModel.VehicleBrand" Role="VehicleBrand" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Admin">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="VehicleBrand">
+              <PropertyRef Name="AdminUsername" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VehicleModel_Admin">
+          <End Type="AutohubModel.Admin" Role="Admin" Multiplicity="0..1" />
+          <End Type="AutohubModel.VehicleModel" Role="VehicleModel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Admin">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="VehicleModel">
+              <PropertyRef Name="Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CartItem_ShoppingCart">
+          <End Type="AutohubModel.ShoppingCart" Role="ShoppingCart" Multiplicity="0..1" />
+          <End Type="AutohubModel.CartItem" Role="CartItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ShoppingCart">
+              <PropertyRef Name="CartId" />
+            </Principal>
+            <Dependent Role="CartItem">
+              <PropertyRef Name="ShoppingCartID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CartItem_Spare">
+          <End Type="AutohubModel.Spare" Role="Spare" Multiplicity="0..1" />
+          <End Type="AutohubModel.CartItem" Role="CartItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Spare">
+              <PropertyRef Name="SpareId" />
+            </Principal>
+            <Dependent Role="CartItem">
+              <PropertyRef Name="SpareId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_User">
+          <End Type="AutohubModel.User" Role="User" Multiplicity="1" />
+          <End Type="AutohubModel.Customer" Role="Customer" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Enquiry_Customer">
+          <End Type="AutohubModel.Customer" Role="Customer" Multiplicity="1" />
+          <End Type="AutohubModel.Enquiry" Role="Enquiry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="Enquiry">
+              <PropertyRef Name="Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Customer">
+          <End Type="AutohubModel.Customer" Role="Customer" Multiplicity="0..1" />
+          <End Type="AutohubModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShoppingCart_Customer">
+          <End Type="AutohubModel.Customer" Role="Customer" Multiplicity="0..1" />
+          <End Type="AutohubModel.ShoppingCart" Role="ShoppingCart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="ShoppingCart">
+              <PropertyRef Name="Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Feedback_User">
+          <End Type="AutohubModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="AutohubModel.Feedback" Role="Feedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="Feedback">
+              <PropertyRef Name="Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderItem_Order">
+          <End Type="AutohubModel.Order" Role="Order" Multiplicity="0..1" />
+          <End Type="AutohubModel.OrderItem" Role="OrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="OrderItem">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Retailer_User">
+          <End Type="AutohubModel.User" Role="User" Multiplicity="1" />
+          <End Type="AutohubModel.Retailer" Role="Retailer" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="Retailer">
+              <PropertyRef Name="Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Spare_Retailer">
+          <End Type="AutohubModel.Retailer" Role="Retailer" Multiplicity="1" />
+          <End Type="AutohubModel.Spare" Role="Spare" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Retailer">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="Spare">
+              <PropertyRef Name="RetailerUsername" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VehicleModel_VehicleBrand">
+          <End Type="AutohubModel.VehicleBrand" Role="VehicleBrand" Multiplicity="0..1" />
+          <End Type="AutohubModel.VehicleModel" Role="VehicleModel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VehicleBrand">
+              <PropertyRef Name="VehicleBrandId" />
+            </Principal>
+            <Dependent Role="VehicleModel">
+              <PropertyRef Name="VehicleBrand" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Category_Spare">
+          <End Type="AutohubModel.Category" Role="Category" Multiplicity="*" />
+          <End Type="AutohubModel.Spare" Role="Spare" Multiplicity="*" />
+        </Association>
+        <Association Name="Model_Spare">
+          <End Type="AutohubModel.Spare" Role="Spare" Multiplicity="*" />
+          <End Type="AutohubModel.VehicleModel" Role="VehicleModel" Multiplicity="*" />
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AutohubModelStoreContainer" CdmEntityContainer="AutohubEntities">
+          <EntitySetMapping Name="Admins">
+            <EntityTypeMapping TypeName="AutohubModel.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="Username" ColumnName="Username" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CartItems">
+            <EntityTypeMapping TypeName="AutohubModel.CartItem">
+              <MappingFragment StoreEntitySet="CartItem">
+                <ScalarProperty Name="SpareId" ColumnName="SpareId" />
+                <ScalarProperty Name="ShoppingCartID" ColumnName="ShoppingCartID" />
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ItemUnitPrice" ColumnName="ItemUnitPrice" />
+                <ScalarProperty Name="CartItemId" ColumnName="CartItemId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="AutohubModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="AdminUsername" ColumnName="AdminUsername" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="AutohubModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Enquiries">
+            <EntityTypeMapping TypeName="AutohubModel.Enquiry">
+              <MappingFragment StoreEntitySet="Enquiry">
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="EnquiryId" ColumnName="EnquiryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Feedbacks">
+            <EntityTypeMapping TypeName="AutohubModel.Feedback">
+              <MappingFragment StoreEntitySet="Feedback">
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="FeedbackDate" ColumnName="FeedbackDate" />
+                <ScalarProperty Name="Type_" ColumnName="Type " />
+                <ScalarProperty Name="FeedbackId" ColumnName="FeedbackId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="AutohubModel.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="OrderTotal" ColumnName="OrderTotal" />
+                <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
+                <ScalarProperty Name="ShippingAddress" ColumnName="ShippingAddress" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderItems">
+            <EntityTypeMapping TypeName="AutohubModel.OrderItem">
+              <MappingFragment StoreEntitySet="OrderItem">
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="OrderItemId" ColumnName="OrderItemId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Retailers">
+            <EntityTypeMapping TypeName="AutohubModel.Retailer">
+              <MappingFragment StoreEntitySet="Retailer">
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ShoppingCarts">
+            <EntityTypeMapping TypeName="AutohubModel.ShoppingCart">
+              <MappingFragment StoreEntitySet="ShoppingCart">
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="CartStatus" ColumnName="CartStatus" />
+                <ScalarProperty Name="CartTotal" ColumnName="CartTotal" />
+                <ScalarProperty Name="CartId" ColumnName="CartId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Spares">
+            <EntityTypeMapping TypeName="AutohubModel.Spare">
+              <MappingFragment StoreEntitySet="Spare">
+                <ScalarProperty Name="RetailerUsername" ColumnName="RetailerUsername" />
+                <ScalarProperty Name="SpareImage" ColumnName="SpareImage" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Warranty" ColumnName="Warranty" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="PartNumber" ColumnName="PartNumber" />
+                <ScalarProperty Name="SpareId" ColumnName="SpareId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="AutohubModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VehicleBrands">
+            <EntityTypeMapping TypeName="AutohubModel.VehicleBrand">
+              <MappingFragment StoreEntitySet="VehicleBrand">
+                <ScalarProperty Name="AdminUsername" ColumnName="AdminUsername" />
+                <ScalarProperty Name="VehicleBrandId" ColumnName="VehicleBrandId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VehicleModels">
+            <EntityTypeMapping TypeName="AutohubModel.VehicleModel">
+              <MappingFragment StoreEntitySet="VehicleModel">
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="VehicleBrand" ColumnName="VehicleBrand" />
+                <ScalarProperty Name="AdminUsername" ColumnName="AdminUsername" />
+                <ScalarProperty Name="CountryMade" ColumnName="CountryMade" />
+                <ScalarProperty Name="FuelType" ColumnName="FuelType" />
+                <ScalarProperty Name="ModelName" ColumnName="ModelName" />
+                <ScalarProperty Name="YearOfManufacture" ColumnName="YearOfManufacture" />
+                <ScalarProperty Name="TransmissionType" ColumnName="TransmissionType" />
+                <ScalarProperty Name="ModelId" ColumnName="ModelId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Category_Spare" TypeName="AutohubModel.Category_Spare" StoreEntitySet="Category_Spare">
+            <EndProperty Name="Spare">
+              <ScalarProperty Name="SpareId" ColumnName="SpareId" />
+            </EndProperty>
+            <EndProperty Name="Category">
+              <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Model_Spare" TypeName="AutohubModel.Model_Spare" StoreEntitySet="Model_Spare">
+            <EndProperty Name="VehicleModel">
+              <ScalarProperty Name="ModelId" ColumnName="ModelId" />
+            </EndProperty>
+            <EndProperty Name="Spare">
+              <ScalarProperty Name="SpareId" ColumnName="SpareId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
